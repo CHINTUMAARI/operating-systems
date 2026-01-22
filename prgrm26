@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char str[50];
+
+    fp = fopen("file.txt","w");
+    fprintf(fp,"Hello File");
+    fclose(fp);
+
+    fp = fopen("file.txt","r");
+    fgets(str,50,fp);
+    printf("Read: %s\n",str);
+    fclose(fp);
+
+    remove("file.txt");
+    printf("File Deleted\n");
+}
