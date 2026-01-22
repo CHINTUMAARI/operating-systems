@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+struct emp {
+    int id;
+    char name[20];
+    float salary;
+};
+
+int main() {
+    struct emp e;
+    FILE *fp;
+
+    fp = fopen("emp.dat","wb+");
+
+    e.id=1; strcpy(e.name,"Ravi"); e.salary=25000;
+    fwrite(&e,sizeof(e),1,fp);
+
+    e.id=2; strcpy(e.name,"Kumar"); e.salary=30000;
+    fwrite(&e,sizeof(e),1,fp);
+
+    rewind(fp);
+    printf("Employee Records:\n");
+
+    while(fread(&e,sizeof(e),1,fp))
+        printf("%d %s %.2f\n",e.id,e.name,e.salary);
+
+    fclose(fp);
+    return 0;
+}
