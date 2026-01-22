@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main() {
+    int fd;
+    char data[]="Hello UNIX System Calls";
+
+    fd = open("test.txt", O_CREAT | O_WRONLY, 0777);
+    write(fd, data, sizeof(data));
+    close(fd);
+
+    fd = open("test.txt", O_RDONLY);
+    char buf[100];
+    read(fd, buf, sizeof(buf));
+    printf("File Content: %s\n", buf);
+    close(fd);
+}
