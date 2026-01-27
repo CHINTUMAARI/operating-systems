@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+int main() {
+    int n, i, pos;
+    printf("Enter number of records: ");
+    scanf("%d", &n);
+    int arr[MAX];
+    for (i = 0; i < n; i++) {
+        printf("Enter record %d position: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter record to search: ");
+    scanf("%d", &pos);
+    for (i = 0; i < n; i++) {
+        if (arr[i] == pos) {
+            printf("Record found at position %d\n", i + 1);
+            break;
+        }
+    }
+    if (i == n) printf("Record not found\n");
+    return 0;
+}
