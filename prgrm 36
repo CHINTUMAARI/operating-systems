@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+int main() {
+    int index[MAX], n, i, pos;
+    printf("Enter number of blocks: ");
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        printf("Enter block %d address: ", i + 1);
+        scanf("%d", &index[i]);
+    }
+    printf("Enter block to search: ");
+    scanf("%d", &pos);
+    if (pos < n) printf("Block address: %d\n", index[pos]);
+    else printf("Block not found\n");
+    return 0;
+}
