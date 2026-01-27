@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void scan(int arr[], int n, int head, int direction) {
+    int seek = 0;
+    if (direction == 1) {
+        for (int i = head; i >= 0; i--) {
+            if (i == arr[i]) seek += abs(head - i);
+        }
+        for (int i = head + 1; i < n; i++) {
+            if (i == arr[i]) seek += abs(head - i);
+        }
+    } else {
+        for (int i = head; i < n; i++) {
+            if (i == arr[i]) seek += abs(head - i);
+        }
+        for (int i = head - 1; i >= 0; i--) {
+            if (i == arr[i]) seek += abs(head - i);
+        }
+    }
+    printf("Total Seek Time: %d\n", seek);
+}
+
+int main() {
+    int arr[] = {98, 183, 37, 122, 14, 124, 65, 67};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int head = 53;
+    int direction = 1; // 1 for left, 0 for right
+    scan(arr, n, head, direction);
+    return 0;
+}
